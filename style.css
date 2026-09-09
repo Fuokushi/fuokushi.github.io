@@ -49,3 +49,9 @@ h2{font-weight:600;letter-spacing:-.04em}
 
 /* Art-directed landscape source fills wide screens without magnifying the portrait. */
 @media(min-width:761px){.portrait{object-position:30% center}.hero{height:100svh;min-height:650px;max-height:960px}}
+
+/* Keep the person entirely photographic: original image over extended scenery. */
+@media(min-width:761px){
+ .hero:before{content:"";position:absolute;inset:0;background:url("landscape-background.png") center center/cover no-repeat;filter:grayscale(1)}
+ .portrait{inset:auto;top:0;left:14%;width:auto;height:100%;max-width:none;aspect-ratio:3/4;object-fit:contain;object-position:center;mask-image:linear-gradient(to right,transparent,#000 8%,#000 87%,transparent)}
+}
