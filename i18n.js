@@ -8,7 +8,7 @@
   const translations = {
     en: english,
     fi: {
-      skip: 'Siirry sisältöön', navigation: 'Päänavigaatio', navWork: 'Projektit', navAbout: 'Minusta', navContact: 'Yhteys <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19L19 5M5 5h14v14"/></svg>', language: 'Kieli',
+      skip: 'Siirry sisältöön', navigation: 'Päänavigaatio', navWork: 'Projektit', navAbout: 'Minusta', navContact: 'Yhteys <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19L19 5M5 5h14v14"/></svg>', language: 'Kieli', languageEnglish: 'Englanti', languageFinnish: 'Suomi', languageRussian: 'Venäjä',
       portrait: 'Lev Yarysh järven ja vuorten edustalla', hero: 'Web-kehittäjä.<br>Python &amp;<br>JavaScript.', heroNote: 'Python · JavaScript · SQL', scroll: 'Vieritä alas <span><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v18M5 14l7 7 7-7"/></svg></span>',
       aboutLabel: 'MINUSTA', aboutHeading: 'Verkkosivut ja<br><span>web-sovellukset.</span>',
       bio: 'Olen Lev, Joensuussa asuva aloitteleva ohjelmistokehittäjä. Rakennan verkkosivustoja ja web-sovelluksia Pythonilla ja JavaScriptillä sekä työskentelen rajapintojen ja tietokantojen parissa.',
@@ -23,7 +23,7 @@
       description: 'Lev Yarysh — web-kehittäjä Joensuusta. Python, JavaScript, Flask ja Odoo. Projektit ja yhteystiedot.'
     },
     ru: {
-      skip: 'Перейти к содержимому', navigation: 'Основная навигация', navWork: 'Работы', navAbout: 'Обо мне', navContact: 'Контакт <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19L19 5M5 5h14v14"/></svg>', language: 'Язык',
+      skip: 'Перейти к содержимому', navigation: 'Основная навигация', navWork: 'Работы', navAbout: 'Обо мне', navContact: 'Контакт <svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 19L19 5M5 5h14v14"/></svg>', language: 'Язык', languageEnglish: 'Английский', languageFinnish: 'Финский', languageRussian: 'Русский',
       portrait: 'Lev Yarysh на фоне гор и озера', hero: 'Веб-разработчик.<br>Python &amp;<br>JavaScript.', heroNote: 'Python · JavaScript · SQL', scroll: 'Листай ниже <span><svg class="ui-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v18M5 14l7 7 7-7"/></svg></span>',
       aboutLabel: 'ОБО МНЕ', aboutHeading: 'Сайты и<br><span>веб-приложения.</span>',
       bio: 'Я Лев — начинающий разработчик из Йоэнсуу. Создаю сайты и веб-приложения на Python и JavaScript, работаю с API и базами данных.',
@@ -38,7 +38,7 @@
       description: 'Lev Yarysh — веб-разработчик из Йоэнсуу, Финляндия. Python, JavaScript, Flask и Odoo. Проекты и контакты.'
     }
   };
-  const selector = document.getElementById('language');
+  const languageButtons = [...document.querySelectorAll('[data-language]')];
   const storageKey = 'lev-portfolio-language';
   function setLanguage(language, persist = false) {
     const locale = Object.hasOwn(translations, language) ? language : 'en';
@@ -49,11 +49,11 @@
     document.querySelector('meta[name="description"]').content = copy.description;
     document.documentElement.lang = locale;
     document.title = locale === 'fi' ? 'Lev Yarysh — Web-kehittäjä' : locale === 'ru' ? 'Lev Yarysh — Веб-разработчик' : 'Lev Yarysh — Web Developer';
-    selector.value = locale;
+    languageButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.language === locale)));
     if (persist) { try { localStorage.setItem(storageKey, locale); } catch { /* Language switching still works without storage. */ } }
   }
   let initialLanguage = 'en';
   try { initialLanguage = localStorage.getItem(storageKey) || 'en'; } catch { /* English is the default. */ }
   setLanguage(initialLanguage);
-  selector.addEventListener('change', () => setLanguage(selector.value, true));
+  languageButtons.forEach(button => button.addEventListener('click', () => setLanguage(button.dataset.language, true)));
 })();
