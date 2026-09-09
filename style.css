@@ -50,5 +50,5 @@ h2{font-weight:600;letter-spacing:-.04em}
 /* Wider portrait framing on tablet and desktop; retain the mobile crop. */
 @media(min-width:761px){
  .hero{background:#444b53}
- .portrait{object-fit:contain;object-position:center center;background:#444b53}
+ .portrait{object-fit:cover;object-position:center 38%;background:transparent}
 }
