@@ -27,3 +27,22 @@ body{max-width:1440px;margin-inline:auto;background:var(--paper)}
  .section{padding-left:7%;padding-right:7%}
  .hero-intro p{font-size:clamp(23px,2.5vw,36px)}
 }
+
+/* Clearer typography: native reading font, stronger contrast, no blurred text glow. */
+body{font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:16px;line-height:1.6}
+h1,h2,.project-info h3{font-family:Manrope,Arial,sans-serif}
+.hero-intro,.hero-bottom,.nav{text-shadow:none}
+.hero-intro p{font-weight:500;line-height:1.35;letter-spacing:-.025em}
+.hero:after{background:linear-gradient(180deg,#10182080 0%,#10182026 38%,#101820b3 100%)}
+h1{font-weight:600;letter-spacing:-.055em}
+h2{font-weight:600;letter-spacing:-.04em}
+.project-info h3{font-weight:600;letter-spacing:-.03em}
+.about-side p,.about-side .education,.project-info p{font-size:17px;line-height:1.75;color:#42483f;max-width:60ch}
+.about-side>div{max-width:48ch}
+.section-label,.project-type{font-weight:600}
+.section-label{font-size:13px}
+.nav-links,.hero-bottom{font-weight:500}
+.contact-line>span,footer{color:#c4c8bf}
+.js-motion .reveal.visible{transform:none}
+@media(min-width:761px){.about-side p{font-size:18px}.about-grid{grid-template-columns:1.25fr 1fr;gap:7%}}
+@media(max-width:760px){.about-side p,.about-side .education,.project-info p{font-size:16px}h1{font-size:14.5vw}}
