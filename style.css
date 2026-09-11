@@ -74,7 +74,10 @@ h2{font-weight:600;letter-spacing:-.04em}
 
 /* Extend each section's own background to the viewport edges. */
 .about,.work{background:var(--paper)}
-.hero,.about,.work,.contact{box-shadow:0 0 0 100vmax var(--section-background);clip-path:inset(0 -100vmax)}
+.hero{box-shadow:0 0 0 100vmax var(--section-background);clip-path:inset(0 -100vmax)}
+html{overflow-x:clip}
+.about,.work,.contact{position:relative;isolation:isolate}
+.about::before,.work::before,.contact::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);background:var(--section-background);pointer-events:none}
 .hero{--section-background:#444b53}
 .about,.work{--section-background:var(--paper)}
 .contact{--section-background:#222421}
