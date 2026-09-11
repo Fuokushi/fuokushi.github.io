@@ -71,3 +71,11 @@ h2{font-weight:600;letter-spacing:-.04em}
 }
 @media(min-width:761px) and (max-width:1000px){.hero{max-height:860px}.nav{gap:18px}.nav-links{gap:20px}.brand{font-size:15px}.hero-intro{top:55%}h1{font-size:70px}}
 @media(max-width:760px){.nav{column-gap:8px}.language-switch{padding:2px}.language-button{min-width:40px;padding:0 8px}.brand{gap:7px}.hero-intro p{font-size:22px}}
+
+/* Extend each section's own background to the viewport edges. */
+.about,.work{background:var(--paper)}
+.hero,.about,.work,.contact{box-shadow:0 0 0 100vmax var(--section-background);clip-path:inset(0 -100vmax)}
+.hero{--section-background:#444b53}
+.about,.work{--section-background:var(--paper)}
+.contact{--section-background:#222421}
+@media(min-width:761px){.hero{--section-background:#202723}}
